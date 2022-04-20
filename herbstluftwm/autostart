@@ -8,8 +8,12 @@ hc() {
 
 hc emit_hook reload
 
-xsetroot -solid '#000016' &
-#nitrogen --restore
+xsetroot -solid '#000000' &
+nitrogen --restore
+killall picom
+picom --backend glx --experimental-backend --blur-method=dual_kawase --blur-strength=7 &
+$HOME/.config/polybar/launch.sh
+
 
 # remove all existing keybindings
 hc keyunbind --all
@@ -20,14 +24,16 @@ hc detect_monitors
 # if you have a super key you will be much happier with Mod set to Mod4
 Mod=Mod4   # Use the super key as the main modifier
 
-TerminalApp=termite
+TerminalApp=alacritty
 BrowserApp=firefox
+AppRunner='rofi --show run'
 
 hc keybind $Mod-Shift-q quit
 hc keybind $Mod-Shift-r reload
 hc keybind $Mod-Shift-c close
 hc keybind $Mod-t spawn $TerminalApp
 hc keybind $Mod-b spawn $BrowserApp
+hc keybind $Mod-Space spawn $AppRunner
 
 # basic movement in tiling and floating mode
 # focusing clients
@@ -69,8 +75,8 @@ hc keybind $Mod-Control-Shift-k resize up -$resizestep
 hc keybind $Mod-Control-Shift-l resize right -$resizestep
 
 # tags
-tag_names=( {1..9} )
-tag_keys=( {1..9} 0 )
+tag_names=( {1..5} )
+tag_keys=( {1..5} 0 )
 
 hc rename default "${tag_names[0]}" || true
 for i in "${!tag_names[@]}" ; do
@@ -127,29 +133,29 @@ hc attr theme.floating.reset 1
 hc set frame_border_active_color '#222222'
 hc set frame_border_normal_color 'transparent'
 hc set frame_bg_normal_color '#565656'
-hc set frame_bg_active_color '#345F0C'
-hc set frame_border_width 1
-hc set always_show_frame on
+hc set frame_bg_active_color '#8C06EC'
+hc set frame_border_width 0
+hc set always_show_frame off
 hc set frame_bg_transparent on
-hc set frame_transparent_width 5
-hc set frame_gap 10 
+hc set frame_transparent_width 0
+hc set frame_gap 5 
 
 hc attr theme.title_height 0
 hc attr theme.padding_top 0  # space below the title's baseline (i.e. text depth)
-hc attr theme.active.color '#9fbc00'
-hc attr theme.normal.color '#454545'
+hc attr theme.active.color '#040160'
+hc attr theme.normal.color '#000000'
 hc attr theme.urgent.color orange
-hc attr theme.inner_width 1
+hc attr theme.inner_width 0
 hc attr theme.inner_color black
-hc attr theme.border_width 2
-hc attr theme.floating.border_width 4
+hc attr theme.border_width 1
+hc attr theme.floating.border_width 1
 hc attr theme.floating.outer_width 1
 hc attr theme.floating.outer_color black
 hc attr theme.active.inner_color '#3E4A00'
 hc attr theme.active.outer_color '#3E4A00'
 hc attr theme.background_color '#141414'
 
-hc set window_gap 0
+hc set window_gap 4
 hc set frame_padding 0
 hc set smart_window_surroundings off
 hc set smart_frame_surroundings on

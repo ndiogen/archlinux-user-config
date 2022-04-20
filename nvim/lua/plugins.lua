@@ -29,9 +29,9 @@ return { configure = function()
 
         use{ 'rhysd/vim-clang-format' }
 
-        use{ 'scrooloose/nerdtree.git' }
+        use{ 'preservim/nerdtree' }
 
-        use{ 'easymotion/vim-easymotion.git' }
+        use{ 'easymotion/vim-easymotion' }
 
         use{ 'wadackel/vim-dogrun' }
     end)

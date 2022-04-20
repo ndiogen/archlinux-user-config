@@ -1,5 +1,5 @@
 local buf_set_keymap = function(...) 
-    vim.api.nvim_buf_set_keymap(bufnr, ...) 
+    vim.api.nvim_buf_set_keymap(0, ...) 
 end
 
 return { setup = function()
