@@ -24,7 +24,7 @@ return { configure = function()
         use{ 'nvim-telescope/telescope.nvim' }
         use{ 'sheerun/vim-polyglot' }
 
-        use{ 'nvim-lua/completion-nvim' }
+        use{ 'ms-jpq/coq_nvim' }
         use{ 'neovim/nvim-lspconfig' }
 
         use{ 'rhysd/vim-clang-format' }
