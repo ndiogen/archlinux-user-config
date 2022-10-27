@@ -1,1 +1,1 @@
-Guifont Monospace:h10
+Guifont Monospace:h9

@@ -22,7 +22,9 @@ return { configure = function()
 
         use{ 'kyazdani42/nvim-web-devicons' }
         use{ 'nvim-telescope/telescope.nvim' }
+
         use{ 'sheerun/vim-polyglot' }
+        --use{ 'RRethy/vim-illuminate' }
 
         use{ 'ms-jpq/coq_nvim' }
         use{ 'neovim/nvim-lspconfig' }
