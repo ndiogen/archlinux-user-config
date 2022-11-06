@@ -79,11 +79,6 @@ _G.packer_plugins = {
     path = "/home/ndiogen/.local/share/nvim/site/pack/packer/start/coq_nvim",
     url = "https://github.com/ms-jpq/coq_nvim"
   },
-  nerdtree = {
-    loaded = true,
-    path = "/home/ndiogen/.local/share/nvim/site/pack/packer/start/nerdtree",
-    url = "https://github.com/preservim/nerdtree"
-  },
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/home/ndiogen/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
@@ -103,6 +98,16 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ndiogen/.local/share/nvim/site/pack/packer/start/popup.nvim",
     url = "https://github.com/nvim-lua/popup.nvim"
+  },
+  ["project.nvim"] = {
+    loaded = true,
+    path = "/home/ndiogen/.local/share/nvim/site/pack/packer/start/project.nvim",
+    url = "https://github.com/ahmedkhalf/project.nvim"
+  },
+  ["telescope-file-browser.nvim"] = {
+    loaded = true,
+    path = "/home/ndiogen/.local/share/nvim/site/pack/packer/start/telescope-file-browser.nvim",
+    url = "https://github.com/nvim-telescope/telescope-file-browser.nvim"
   },
   ["telescope.nvim"] = {
     loaded = true,

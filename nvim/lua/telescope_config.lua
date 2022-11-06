@@ -48,8 +48,12 @@ return { setup = function()
       }
     }
 
+    require("telescope").load_extension("file_browser")
+
     local bufopts = { noremap=true, silent=true }
     vim.keymap.set('n', 'sf', require('telescope.builtin').find_files,  bufopts)
-    vim.keymap.set('n', 'sb', require('telescope.builtin').buffers,  bufopts)
     vim.keymap.set('n', 'sc', require('telescope.builtin').current_buffer_fuzzy_find, bufopts)
+
+    vim.keymap.set('n', '<Tab>', require('telescope.builtin').buffers,  bufopts)
+    vim.keymap.set('n', '<C-n>', require("telescope").extensions.file_browser.file_browser, bufopts)
 end }

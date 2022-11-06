@@ -19,19 +19,19 @@ return { configure = function()
     require('packer').startup(function()
         use{ "nvim-lua/plenary.nvim" }
         use{ 'nvim-lua/popup.nvim'}
-
         use{ 'kyazdani42/nvim-web-devicons' }
+
         use{ 'nvim-telescope/telescope.nvim' }
+        use{ "nvim-telescope/telescope-file-browser.nvim" }
 
         use{ 'sheerun/vim-polyglot' }
         --use{ 'RRethy/vim-illuminate' }
 
         use{ 'ms-jpq/coq_nvim' }
         use{ 'neovim/nvim-lspconfig' }
+        use{ 'ahmedkhalf/project.nvim' }
 
         use{ 'rhysd/vim-clang-format' }
-
-        use{ 'preservim/nerdtree' }
 
         use{ 'easymotion/vim-easymotion' }
 
@@ -45,6 +45,7 @@ return { configure = function()
     require("telescope_config").setup()
 
     require("lsp_config").setup()
+    require("project").setup()
 
     require("clang_format_config").setup()
 
