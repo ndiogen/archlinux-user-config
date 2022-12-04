@@ -19,7 +19,7 @@ return { configure = function()
     require('packer').startup(function()
         use{ "nvim-lua/plenary.nvim" }
         use{ 'nvim-lua/popup.nvim'}
-        use{ 'kyazdani42/nvim-web-devicons' }
+        use{ 'nvim-tree/nvim-web-devicons' }
 
         use{ 'nvim-telescope/telescope.nvim' }
         use{ "nvim-telescope/telescope-file-browser.nvim" }
@@ -36,9 +36,10 @@ return { configure = function()
         use{ 'easymotion/vim-easymotion' }
 
         use{ 'wadackel/vim-dogrun' }
+        use{ 'EdenEast/nightfox.nvim' }
     end)
 
-    nvim_execute("colorscheme dogrun")
+    nvim_execute("colorscheme duskfox")
     require('nvim-web-devicons').setup{default = true}
 
     require("nerdtree_config").setup()

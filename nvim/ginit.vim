@@ -1,1 +1,1 @@
-Guifont Monospace:h9
+Guifont Input Nerd Font:h10

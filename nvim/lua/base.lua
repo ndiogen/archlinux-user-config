@@ -14,9 +14,8 @@ configure = function()
     set_option( 'b', 'tabstop', indent_size )
     set_option( 'b', 'shiftwidth', indent_size )
 
-
     set_option( 'o', 'completeopt', 'menuone,noinsert,noselect' )
-
+    set_option( 'o', 'laststatus', 0 )
 
     vim.g['clang_format#detect_style_file'] = 1
 

@@ -108,9 +108,10 @@ window:
   #multiplier: 3
 
 # Font configuration
-#font:
+font:
   # Normal (roman) font face
-  #normal:
+  normal:
+    family: Input Nerd Font
     # Font family
     #
     # Default:
@@ -120,7 +121,7 @@ window:
     #family: monospace
 
     # The `style` can be specified to pick a specific face.
-    #style: Regular
+    style: Regular
 
   # Bold font face
   #bold:
@@ -156,7 +157,7 @@ window:
     #style: Bold Italic
 
   # Point size
-  #size: 11.0
+  size: 9.5
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
@@ -192,8 +193,8 @@ window:
 colors:
   # Default colors
   primary:
-    background: '#010000'
-    foreground: '#c5c8c6'
+    background: '#000000'
+    foreground: '#a5a8a6'
 
     # Bright and dim foreground colors
     #

@@ -79,6 +79,11 @@ _G.packer_plugins = {
     path = "/home/ndiogen/.local/share/nvim/site/pack/packer/start/coq_nvim",
     url = "https://github.com/ms-jpq/coq_nvim"
   },
+  ["nightfox.nvim"] = {
+    loaded = true,
+    path = "/home/ndiogen/.local/share/nvim/site/pack/packer/start/nightfox.nvim",
+    url = "https://github.com/EdenEast/nightfox.nvim"
+  },
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/home/ndiogen/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
@@ -87,7 +92,7 @@ _G.packer_plugins = {
   ["nvim-web-devicons"] = {
     loaded = true,
     path = "/home/ndiogen/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
-    url = "https://github.com/kyazdani42/nvim-web-devicons"
+    url = "https://github.com/nvim-tree/nvim-web-devicons"
   },
   ["plenary.nvim"] = {
     loaded = true,

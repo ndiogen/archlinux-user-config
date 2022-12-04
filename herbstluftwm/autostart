@@ -8,12 +8,17 @@ hc() {
 
 hc emit_hook reload
 
+xrandr --dpi 217 --output eDP 
 xsetroot -solid '#000000' &
-nitrogen --restore
 killall picom
-picom --config ~/.config/picom/picom.conf -b --experimental-backend
+killall conky
+killall dunst
+nitrogen --restore
+picom --config $HOME/.config/picom/picom.conf -b --experimental-backend --backend glx --blur-method dual_kawase --blur-strength 4
+dunst &
+conky -d -c ~/.config/conky/conky.conf
+conky -d -c ~/.config/conky/conky_left_bottom.conf
 $HOME/.config/polybar/launch.sh
-
 
 # remove all existing keybindings
 hc keyunbind --all
@@ -30,7 +35,7 @@ AppRunner='rofi -show drun'
 
 hc keybind $Mod-Shift-q quit
 hc keybind $Mod-Shift-r reload
-hc keybind $Mod-Shift-c close
+hc keybind $Mod-Shift-c close_or_remove
 hc keybind $Mod-t spawn $TerminalApp
 hc keybind $Mod-b spawn $BrowserApp
 hc keybind $Mod-z spawn $AppRunner 
@@ -94,10 +99,9 @@ hc keybind $Mod-comma  use_index -1 --skip-visible
 
 # layouting
 hc keybind $Mod-r remove
-hc keybind $Mod-s floating toggle
 hc keybind $Mod-f fullscreen toggle
-hc keybind $Mod-Shift-f set_attr clients.focus.floating toggle
-hc keybind $Mod-Shift-m set_attr clients.focus.minimized true
+hc keybind $Mod-s set_attr clients.focus.floating toggle
+hc keybind $Mod-m set_attr clients.focus.minimized true
 # restore all minimized windows of the focused tag
 hc keybind $Mod-Ctrl-m foreach CLIENT clients. \
      sprintf MINATT "%c.minimized" CLIENT \
@@ -127,6 +131,10 @@ hc keybind $Mod-Shift-Tab   cycle_all -1
 hc keybind $Mod-c cycle
 hc keybind $Mod-i jumpto urgent
 
+# extra keys
+hc keybind XF86MonBrightnessUp spawn ~/.config/light/change_backlight.sh up 0.5
+hc keybind XF86MonBrightnessDown spawn ~/.config/light/change_backlight.sh down 0.5
+
 # theme
 hc attr theme.tiling.reset 1
 hc attr theme.floating.reset 1
@@ -142,7 +150,7 @@ hc set frame_gap 5
 
 hc attr theme.title_height 0
 hc attr theme.padding_top 0  # space below the title's baseline (i.e. text depth)
-hc attr theme.active.color '#FF0160'
+hc attr theme.active.color '#000000'
 hc attr theme.normal.color '#000000'
 hc attr theme.urgent.color orange
 hc attr theme.inner_width 0
@@ -157,7 +165,7 @@ hc attr theme.background_color '#141414'
 
 hc set window_gap 4
 hc set frame_padding 0
-hc set smart_window_surroundings off
+hc set smart_window_surroundings on
 hc set smart_frame_surroundings on
 hc set mouse_recenter_gap 0
 
@@ -178,15 +186,4 @@ hc set tree_style '╾│ ├└╼─┐'
 # unlock, just to be sure
 hc unlock
 
-# do multi monitor setup here, e.g.:
-# hc set_monitors 1280x1024+0+0 1280x1024+1280+0
-# or simply:
-# hc detect_monitors
-
-# find the panel
-panel=~/.config/herbstluftwm/panel.sh
-[ -x "$panel" ] || panel=/etc/xdg/herbstluftwm/panel.sh
-for monitor in $(hc list_monitors | cut -d: -f1) ; do
-    # start it on each monitor
-    "$panel" "$monitor" &
-done
+$HOME/.config/herbstluftwm/scratchpad.sh
