@@ -23,8 +23,15 @@ return { configure = function()
 
         use{ 'nvim-telescope/telescope.nvim' }
         use{ "nvim-telescope/telescope-file-browser.nvim" }
+        use{ 'nvim-tree/nvim-web-devicons' }
 
-        use{ 'sheerun/vim-polyglot' }
+        use {
+            'nvim-treesitter/nvim-treesitter',
+            run = function()
+                local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+                ts_update()
+            end,
+        }
         --use{ 'RRethy/vim-illuminate' }
 
         use{ 'ms-jpq/coq_nvim' }
@@ -45,6 +52,7 @@ return { configure = function()
     require("nerdtree_config").setup()
     require("telescope_config").setup()
 
+    require("treesitter_config").setup()
     require("lsp_config").setup()
     require("project").setup()
 

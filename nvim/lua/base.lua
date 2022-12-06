@@ -22,9 +22,6 @@ configure = function()
     -- Vim shortcuts
     vim.api.nvim_set_keymap('v', '/', [["-y/<C-R>-]],  {})
 
-    -- Vim autocomplete
-    vim.api.nvim_set_keymap('i', '<C-Space>', "<Plug>(completion_trigger)",  {})
-
     -- Vim qlist
     vim.api.nvim_set_keymap('n', '<C-j>', ":cnext<CR>",   {})
     vim.api.nvim_set_keymap('n', '<C-k>', ":cprev<CR>",   {})
