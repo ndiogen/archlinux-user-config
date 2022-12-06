@@ -16,6 +16,9 @@ configure = function()
 
     set_option( 'o', 'completeopt', 'menuone,noinsert,noselect' )
     set_option( 'o', 'laststatus', 0 )
+    set_option( 'o', 'ruler', false )
+
+    set_option( 'o', 'exrc', false )
 
     vim.g['clang_format#detect_style_file'] = 1
 
@@ -30,5 +33,8 @@ configure = function()
     vim.api.nvim_set_keymap('n', '<C-b>j', ":bnext<CR>",   {})
     vim.api.nvim_set_keymap('n', '<C-b>k', ":bprev<CR>",   {})
     vim.api.nvim_set_keymap('n', '<C-b>c', ":bdelete<CR>", {})
+
+    -- Terminal managment
+    vim.api.nvim_set_keymap('t', '<esc>', [[<C-\><C-n>]], {})
 end
 }
