@@ -9,10 +9,6 @@ local function bootstrap_packer_plugin()
 	end
 end 
 
-local load_config = function(config_file)
-    require(config_file).configure()
-end
-
 return { configure = function()
     bootstrap_packer_plugin();
 
@@ -48,6 +44,7 @@ return { configure = function()
     end)
 
     require('nvim-web-devicons').setup{default = true}
+    require("exrc_config").setup()
 
     require("nerdtree_config").setup()
     require("telescope_config").setup()
@@ -55,7 +52,6 @@ return { configure = function()
     require("treesitter_config").setup()
     require("lsp_config").setup()
     require("project_config").setup()
-    require("exrc_config").setup()
     require("toggleterm_config").setup()
 
     require("clang_format_config").setup()
@@ -63,4 +59,5 @@ return { configure = function()
     require("easymotion_config").setup()
 
     nvim_execute("colorscheme duskfox")
-end}
+end,
+}

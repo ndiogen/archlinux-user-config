@@ -23,18 +23,18 @@ configure = function()
     vim.g['clang_format#detect_style_file'] = 1
 
     -- Vim shortcuts
-    vim.api.nvim_set_keymap('v', '/', [["-y/<C-R>-]],  {})
+    vim.keymap.set('v', '/', [["-y/<C-R>-]],  {})
 
     -- Vim qlist
-    vim.api.nvim_set_keymap('n', '<C-j>', ":cnext<CR>",   {})
-    vim.api.nvim_set_keymap('n', '<C-k>', ":cprev<CR>",   {})
+    vim.keymap.set('n', '<C-j>', ":cnext<CR>",   {})
+    vim.keymap.set('n', '<C-k>', ":cprev<CR>",   {})
 
     -- Buffers managment
-    vim.api.nvim_set_keymap('n', '<C-b>j', ":bnext<CR>",   {})
-    vim.api.nvim_set_keymap('n', '<C-b>k', ":bprev<CR>",   {})
-    vim.api.nvim_set_keymap('n', '<C-b>c', ":bdelete<CR>", {})
+    vim.keymap.set('n', '<C-b>j', ":bnext<CR>",   {})
+    vim.keymap.set('n', '<C-b>k', ":bprev<CR>",   {})
+    vim.keymap.set('n', '<C-b>c', ":bdelete<CR>", {})
 
     -- Terminal managment
-    vim.api.nvim_set_keymap('t', '<esc>', [[<C-\><C-n>]], {})
+    vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], {})
 end
 }

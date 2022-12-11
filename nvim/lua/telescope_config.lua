@@ -1,7 +1,9 @@
-return { setup = function()
+return { 
+setup = function(project_menu)
     local actions = require('telescope.actions');
+    local telescope = require('telescope');
 
-    require('telescope').setup{
+    telescope.setup{
         defaults = {
             file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
             grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
@@ -48,28 +50,19 @@ return { setup = function()
         },
         extensions = {
             menu = {
-                default = {
-                    items = {
-                        -- You can add an item of menu in the form of { "<display>", "<command>" }
-                        { "Checkhealth", "checkhealth" },
-                        { "Show LSP Info", "LspInfo" },
-                        { "Files", "Telescope find_files" },
-
-                        -- The above examples are syntax-sugars of the following;
-                        { display = "Change colorscheme", value = "Telescope colorscheme" },
-                    },
-                },
+                project = project_menu or {},
             },
         },
     }
 
-    require("telescope").load_extension("file_browser")
-    require("telescope").load_extension("menu")
+    telescope.load_extension("file_browser")
+    telescope.load_extension("menu")
 
-    local bufopts = { noremap=true, silent=true }
+    local bufopts = { noremap=false, silent=true }
     vim.keymap.set('n', 'sf', require('telescope.builtin').find_files,  bufopts)
     vim.keymap.set('n', 'sc', require('telescope.builtin').current_buffer_fuzzy_find, bufopts)
-
     vim.keymap.set('n', '<Tab>', require('telescope.builtin').buffers,  bufopts)
-    vim.keymap.set('n', '<C-n>', require("telescope").extensions.file_browser.file_browser, bufopts)
+
+    vim.keymap.set('n', '<C-n>', function() telescope.extensions.file_browser.file_browser() end, bufopts)
+    vim.keymap.set('n', '<C-p>', function() telescope.extensions.menu.project({}) end, bufopts)
 end }

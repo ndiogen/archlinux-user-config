@@ -1,1 +1,1 @@
-Guifont Input Nerd Font:h10
+Guifont Input Nerd Font:h9
