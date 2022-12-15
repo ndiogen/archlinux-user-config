@@ -29,6 +29,7 @@ return { configure = function()
                 ts_update()
             end,
         }
+        use { 'nvim-treesitter/nvim-treesitter-context' }
 
         use{ 'ms-jpq/coq_nvim', branch = 'coq' }
         use{ 'ms-jpq/coq.artifacts', branch = 'artifacts' }
