@@ -18,7 +18,7 @@ picom --config $HOME/.config/picom/picom.conf -b --experimental-backend --backen
 dunst &
 conky -d -c ~/.config/conky/conky.conf
 conky -d -c ~/.config/conky/conky_left_bottom.conf
-$HOME/.config/polybar/launch.sh
+# $HOME/.config/polybar/launch.sh
 
 # remove all existing keybindings
 hc keyunbind --all
@@ -186,4 +186,4 @@ hc set tree_style '╾│ ├└╼─┐'
 # unlock, just to be sure
 hc unlock
 
-$HOME/.config/herbstluftwm/scratchpad.sh
+#$HOME/.config/herbstluftwm/scratchpad.sh

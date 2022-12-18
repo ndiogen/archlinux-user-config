@@ -1,4 +1,3 @@
-local coq = require 'coq'
 
 local on_attach = function()
     -- Mappings.
@@ -9,9 +8,12 @@ local on_attach = function()
 end
 
 return { setup = function()
+    local coq = require 'coq'
     local lspconfig = require('lspconfig');
     lspconfig.clangd.setup(coq.lsp_ensure_capabilities{
-        cmd = { "clangd", "--background-index", "--compile-commands-dir=build" },
+        cmd = { "clangd", "--background-index" },
         on_attach = on_attach
     });
+
+    coq.Now('--shut-up')
 end }

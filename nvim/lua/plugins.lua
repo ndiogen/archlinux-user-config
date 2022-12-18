@@ -13,6 +13,7 @@ return { configure = function()
     bootstrap_packer_plugin();
 
     require('packer').startup(function()
+        use{ 'wbthomason/packer.nvim' }
         use{ "nvim-lua/plenary.nvim" }
         use{ 'nvim-lua/popup.nvim'}
         use{ 'nvim-tree/nvim-web-devicons' }
@@ -29,17 +30,20 @@ return { configure = function()
             end,
         }
 
-        use{ 'ms-jpq/coq_nvim' }
+        use{ 'ms-jpq/coq_nvim', branch = 'coq' }
+        use{ 'ms-jpq/coq.artifacts', branch = 'artifacts' }
+
         use{ 'neovim/nvim-lspconfig' }
         use{ 'ahmedkhalf/project.nvim' }
         use{ 'MunifTanjim/exrc.nvim' }
         use{ 'akinsho/toggleterm.nvim' }
+        use{ 'stevearc/overseer.nvim' }
 
         use{ 'rhysd/vim-clang-format' }
 
         use{ 'easymotion/vim-easymotion' }
 
-        use{ 'wadackel/vim-dogrun' }
+        use{ 'rcarriga/nvim-notify' }
         use{ 'EdenEast/nightfox.nvim' }
     end)
 
@@ -51,11 +55,12 @@ return { configure = function()
 
     require("treesitter_config").setup()
     require("lsp_config").setup()
-    require("project_config").setup()
     require("toggleterm_config").setup()
+    require("overseer_config").setup()
 
     require("clang_format_config").setup()
 
+    require("notify_config").setup()
     require("easymotion_config").setup()
 
     nvim_execute("colorscheme duskfox")
