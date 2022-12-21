@@ -20,6 +20,12 @@ configure = function()
 
     set_option( 'o', 'exrc', false )
 
+    -- Gui config
+    vim.opt.guifont = 'Input Nerd Font:h9'
+    vim.g['neovide_refresh_rate'] = 144
+    vim.g['neovide_refresh_rate_idle'] = 1
+    vim.g['neovide_scroll_animation_length'] = 0.2
+
     vim.g['clang_format#detect_style_file'] = 1
 
     -- Vim shortcuts
@@ -36,5 +42,6 @@ configure = function()
 
     -- Terminal managment
     vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], {})
+
 end
 }
