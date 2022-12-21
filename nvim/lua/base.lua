@@ -43,5 +43,12 @@ configure = function()
     -- Terminal managment
     vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], {})
 
+    -- Register some filetypes
+    vim.filetype.add({
+        extension = {
+            ush = 'hlsl',
+            usf = 'hlsl'
+        }
+    })
 end
 }
