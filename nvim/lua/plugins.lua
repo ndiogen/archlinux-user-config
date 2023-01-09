@@ -21,6 +21,7 @@ return { configure = function()
         use{ 'nvim-telescope/telescope.nvim' }
         use{ "nvim-telescope/telescope-file-browser.nvim" }
         use{ 'octarect/telescope-menu.nvim' }
+        use{ 'nvim-tree/nvim-tree.lua' }
 
         use {
             'nvim-treesitter/nvim-treesitter',
@@ -40,9 +41,9 @@ return { configure = function()
         use{ 'akinsho/toggleterm.nvim' }
         use{ 'stevearc/overseer.nvim' }
 
-        use{ 'rhysd/vim-clang-format' }
+        use{ 'lewis6991/gitsigns.nvim' }
 
-        use{ 'easymotion/vim-easymotion' }
+        use{ 'phaazon/hop.nvim', branch = 'v2' } -- optional but strongly recommended
 
         use{ 'rcarriga/nvim-notify' }
         use{ 'EdenEast/nightfox.nvim' }
@@ -51,18 +52,18 @@ return { configure = function()
     require('nvim-web-devicons').setup{default = true}
     require("exrc_config").setup()
 
-    require("nerdtree_config").setup()
     require("telescope_config").setup()
+    require("nvimtree_config").setup()
 
     require("treesitter_config").setup()
     require("lsp_config").setup()
     require("toggleterm_config").setup()
     require("overseer_config").setup()
 
-    require("clang_format_config").setup()
+    require("gitsigns_config").setup()
 
     require("notify_config").setup()
-    require("easymotion_config").setup()
+    require("hop_config").setup()
 
     nvim_execute("colorscheme duskfox")
 end,

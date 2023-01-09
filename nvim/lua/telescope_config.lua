@@ -50,6 +50,9 @@ setup = function(project_menu)
             }
         },
         extensions = {
+            file_browser = {
+                hijack_netrw = true,
+            },
             menu = {
                 project = project_menu or {},
             },
@@ -65,6 +68,7 @@ setup = function(project_menu)
     local bufopts = { noremap=false, silent=true }
     vim.keymap.set('n', 'sq', require('telescope.builtin').quickfix, bufopts)
     vim.keymap.set('n', 'sf', require('telescope.builtin').find_files, bufopts)
+    vim.keymap.set('n', '<sF>', function() telescope.extensions.file_browser.file_browser() end, bufopts)
     vim.keymap.set('n', 'sg', require('telescope.builtin').live_grep, bufopts)
     vim.keymap.set('n', 'sG', require('telescope.builtin').grep_string, bufopts)
     vim.keymap.set('n', 'sc', require('telescope.builtin').current_buffer_fuzzy_find, bufopts)
@@ -72,7 +76,6 @@ setup = function(project_menu)
     vim.keymap.set('n', 'ss', require('telescope.builtin').lsp_workspace_symbols, bufopts)
     vim.keymap.set('n', '<Tab>', require('telescope.builtin').buffers,  bufopts)
 
-    vim.keymap.set('n', '<C-n>', function() telescope.extensions.file_browser.file_browser() end, bufopts)
     vim.keymap.set('n', '<C-p>', function() telescope.extensions.menu.project({}) end, bufopts)
     vim.keymap.set('n', '<C-S-p>', function() telescope.extensions.projects.projects() end, bufopts)
 end }

@@ -1,3 +1,7 @@
 return { setup = function()
-    require("toggleterm").setup();
+    local toggleterm = require("toggleterm");
+    toggleterm.setup({
+        open_mapping = [[<C-t>]],
+    });
+
 end }
