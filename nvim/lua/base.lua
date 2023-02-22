@@ -21,7 +21,7 @@ configure = function()
     set_option( 'o', 'exrc', false )
 
     -- Gui config
-    vim.opt.guifont = 'Input Nerd Font:h9'
+    vim.opt.guifont = 'Input Nerd Font:h8'
     vim.g['neovide_refresh_rate'] = 144
     vim.g['neovide_refresh_rate_idle'] = 1
     vim.g['neovide_scroll_animation_length'] = 0.2

@@ -35,6 +35,8 @@ return { configure = function()
         use{ 'ms-jpq/coq_nvim', branch = 'coq' }
         use{ 'ms-jpq/coq.artifacts', branch = 'artifacts' }
 
+        use{ "zbirenbaum/copilot.lua" }
+
         use{ 'neovim/nvim-lspconfig' }
         use{ 'ahmedkhalf/project.nvim' }
         use{ 'MunifTanjim/exrc.nvim' }
@@ -54,6 +56,8 @@ return { configure = function()
 
     require("telescope_config").setup()
     require("nvimtree_config").setup()
+
+    require("copilot_config").setup()
 
     require("treesitter_config").setup()
     require("lsp_config").setup()
