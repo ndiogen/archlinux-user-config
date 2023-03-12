@@ -1,40 +1,42 @@
 local overseer = require('overseer')
+local telescope_config = require("telescope_config")
 
-local run_overseer_task = function(task)
-    if task:is_pending() then
-        overseer.run_action(task, 'start')
-    else
-        overseer.run_action(task, 'restart')
-    end
-end
+local telescope_menu = {items={}}
 
-local open_overseer_task = function(task)
-    if not task:is_pending() then
-        overseer.run_action(task, 'open float')
-    end
-end
+local register_global_task_template = function(name, hotkey, parameters)
+    overseer.register_template({
+        name = name,
+        condition = {
+            dir = vim.fn.getcwd(),
+        },
+        builder = function()
+            return vim.tbl_deep_extend('force', {name = name}, parameters)
+        end,
+    })
 
-local setup_project_menu = function(menu)
-    local telescope_menu = {items={}}
-
-    for i=1, #menu do
-        local task = menu[i][1]
-        local base_hotkey = menu[i][2]
-
-        task.name = task.name .. " <" .. base_hotkey .. ">";
-
-        local hotkey_run = '<' .. base_hotkey .. '>'
-        local hotkey_open = '<C-' .. base_hotkey .. '>'
-        local telescope_menu_entity = {task.name, function() run_overseer_task(task) end}
-
-        vim.api.nvim_set_keymap('n', hotkey_run, '', {callback = function() run_overseer_task(task) end})
-        vim.api.nvim_set_keymap('n', hotkey_open, '', {callback = function() open_overseer_task(task) end})
-        table.insert(telescope_menu.items, telescope_menu_entity)
+    local run_callback = function() 
+        overseer.run_template(
+            {name = name},
+            function(task) 
+                if hotkey ~= nil then
+                    local hotkey_open = '<C-' .. hotkey .. '>'
+                    vim.api.nvim_set_keymap('n', hotkey_open, '', {callback = function() overseer.run_action(task, 'open float') end})
+                end
+            end
+        ) 
     end
 
-    require("telescope_config").setup(telescope_menu)
+
+    if hotkey ~= nil then
+        local hotkey_run = '<' .. hotkey .. '>'
+        vim.api.nvim_set_keymap('n', hotkey_run, '', {callback = run_callback})
+    end
+
+    local telescope_menu_entity = {name, run_callback}
+    table.insert(telescope_menu.items, telescope_menu_entity)
+    telescope_config.setup(telescope_menu)
 end
 
 return {
-    setup_project_task_menu = setup_project_menu
+    register_global_task_template = register_global_task_template
 }
