@@ -45,7 +45,7 @@ return { configure = function()
 
         use{ 'lewis6991/gitsigns.nvim' }
 
-        use{ 'phaazon/hop.nvim', branch = 'v2' } -- optional but strongly recommended
+        use{ 'azazel7/hop.nvim' }
 
         use{ 'rcarriga/nvim-notify' }
         use{ 'EdenEast/nightfox.nvim' }
