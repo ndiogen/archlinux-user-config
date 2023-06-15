@@ -35,6 +35,9 @@ return { configure = function()
         use{ 'ms-jpq/coq_nvim', branch = 'coq' }
         use{ 'ms-jpq/coq.artifacts', branch = 'artifacts' }
 
+        use{ 'mfussenegger/nvim-dap' }
+        use{ 'rcarriga/nvim-dap-ui' }
+
         use{ "zbirenbaum/copilot.lua" }
 
         use{ 'neovim/nvim-lspconfig' }
@@ -63,6 +66,8 @@ return { configure = function()
     require("lsp_config").setup()
     require("toggleterm_config").setup()
     require("overseer_config").setup()
+
+    require("dap_config").setup()
 
     require("gitsigns_config").setup()
 
