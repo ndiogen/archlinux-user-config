@@ -1,4 +1,22 @@
+config_font_size = 8
+config_font_type = 'Input Nerd Font'
+
+function config_font()
+    vim.opt.guifont = config_font_type .. ':h' .. config_font_size
+end
+
+function increase_font_size()
+    config_font_size = config_font_size + 1
+    config_font()
+end
+
+function decrease_font_size()
+    config_font_size = config_font_size - 1
+    config_font()
+end
+
 return { 
+
 configure = function() 
     local function set_option(scope, key, value)
         local scopes = {o = vim.o, b = vim.bo, w = vim.wo}
@@ -23,7 +41,6 @@ configure = function()
     vim.g['formatoptions'] = 'jcrql'
 
     -- Gui config
-    vim.opt.guifont = 'Input Nerd Font:h8'
     vim.g['neovide_scroll_animation_length'] = 0.15
 
     vim.g['clang_format#detect_style_file'] = 1
@@ -50,5 +67,9 @@ configure = function()
             usf = 'hlsl'
         }
     })
+
+    config_font()
+    vim.keymap.set('n', '<C-=>', ":lua increase_font_size()<CR>", {})
+    vim.keymap.set('n', '<C-->', ":lua decrease_font_size()<CR>", {})
 end
 }
