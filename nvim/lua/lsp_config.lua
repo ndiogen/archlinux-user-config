@@ -1,4 +1,3 @@
-
 local on_attach = function()
     -- Mappings.
     local opts = { noremap=true, silent=true }
@@ -10,10 +9,13 @@ end
 return { setup = function()
     local coq = require 'coq'
     local lspconfig = require('lspconfig');
+
     lspconfig.clangd.setup(coq.lsp_ensure_capabilities{
         cmd = { "clangd", "--background-index" },
         on_attach = on_attach
     });
+
+    lspconfig.tsserver.setup{}
 
     coq.Now('--shut-up')
 end }

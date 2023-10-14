@@ -59,7 +59,7 @@ setup = function(project_menu)
         },
     }
 
-    projects.setup()
+    projects.setup({})
 
     telescope.load_extension("file_browser")
     telescope.load_extension('projects')
@@ -77,5 +77,5 @@ setup = function(project_menu)
     vim.keymap.set('n', '<Tab>', require('telescope.builtin').buffers,  bufopts)
 
     vim.keymap.set('n', '<C-p>', function() telescope.extensions.menu.project({}) end, bufopts)
-    vim.keymap.set('n', '<C-S-p>', function() telescope.extensions.projects.projects() end, bufopts)
+    vim.keymap.set('n', '<C-Home>', function() telescope.extensions.projects.projects{} end, bufopts)
 end }

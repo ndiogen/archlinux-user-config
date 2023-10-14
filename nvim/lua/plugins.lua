@@ -23,14 +23,14 @@ return { configure = function()
         use{ 'octarect/telescope-menu.nvim' }
         use{ 'nvim-tree/nvim-tree.lua' }
 
-        use {
+        use{
             'nvim-treesitter/nvim-treesitter',
             run = function()
                 local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
                 ts_update()
             end,
         }
-        use { 'nvim-treesitter/nvim-treesitter-context' }
+        use{ 'nvim-treesitter/nvim-treesitter-context' }
 
         use{ 'ms-jpq/coq_nvim', branch = 'coq' }
         use{ 'ms-jpq/coq.artifacts', branch = 'artifacts' }
@@ -49,9 +49,17 @@ return { configure = function()
         use{ 'lewis6991/gitsigns.nvim' }
 
         use{ 'azazel7/hop.nvim' }
+        use{'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
 
         use{ 'rcarriga/nvim-notify' }
         use{ 'EdenEast/nightfox.nvim' }
+
+        use{ 
+            'glacambre/firenvim', 
+            run = function() 
+                vim.fn['firenvim#install'](0)
+            end  
+        }
     end)
 
     require('nvim-web-devicons').setup{default = true}
@@ -73,6 +81,7 @@ return { configure = function()
 
     require("notify_config").setup()
     require("hop_config").setup()
+    require("ufo_config").setup()
 
     nvim_execute("colorscheme duskfox")
 end,

@@ -60,6 +60,9 @@ configure = function()
     -- Terminal managment
     vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], {})
 
+    -- Selection
+    vim.keymap.set('n', '<C-Esc>', ":noh<CR>", {})
+
     -- Register some filetypes
     vim.filetype.add({
         extension = {
