@@ -2,6 +2,8 @@ local overseer = require('overseer')
 local telescope_config = require("telescope_config")
 
 local telescope_menu = {items={}}
+local executable_targets = {}
+
 
 local register_global_task_template = function(name, hotkey, parameters)
     overseer.register_template({
@@ -37,6 +39,19 @@ local register_global_task_template = function(name, hotkey, parameters)
     telescope_config.setup(telescope_menu)
 end
 
+local register_exectable_target = function(name, path)
+    executable_targets[name] = path
+
+    get_executable_targets()
+end
+
+local get_executable_targets = function()
+    return executable_targets
+end
+
 return {
-    register_global_task_template = register_global_task_template
+    register_global_task_template = register_global_task_template,
+    register_exectable_target = register_exectable_target,
+
+    get_executable_targets = get_executable_targets
 }

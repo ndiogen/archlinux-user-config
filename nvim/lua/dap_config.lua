@@ -1,25 +1,60 @@
+local telescope_find_executable_callback = function()
+    local pickers = require("telescope.pickers")
+    local finders = require("telescope.finders")
+    local conf = require("telescope.config").values
+    local actions = require("telescope.actions")
+    local action_state = require("telescope.actions.state")
+
+    return coroutine.create(function(coro)
+        local opts = {}
+        pickers.new(opts, {
+                prompt_title = "Path to executable",
+                finder = finders.new_oneshot_job({ "fd", "-E", "*CMakeFiles*", "--type", "x", ".", "./build/" }, {}),
+                sorter = conf.generic_sorter(opts),
+                attach_mappings = function(buffer_number)
+                    actions.select_default:replace(function()
+                    actions.close(buffer_number)
+                    coroutine.resume(coro, action_state.get_selected_entry()[1])
+                    end)
+                return true
+                end,
+          }):find()
+    end)
+end
+
 return { setup = function()
     local dap = require("dap");
     local dapui = require("dapui");
 
-    dap.adapters.lldb = {
+    dap.adapters.codelldb = {
+        type = 'server',
+        port = "${port}",
+        executable = {
+            command = '/usr/bin/codelldb',
+            args = {"--port", "${port}"},
+        }
+    }
+    dap.adapters.codelldbtest = {
+      type = 'server',
+      host = '127.0.0.1',
+      port = 13000 -- 💀 Use the port printed out or specified with `--port`
+    }
+
+    dap.adapters.gdb = {
         type = "executable",
-        command = "/usr/bin/lldb-vscode", -- adjust as needed
-        name = "lldb",
+        command = "gdb",
+        args = { "-i", "dap" }
     }
 
     dap.configurations.cpp = {
         {
             name = "Launch",
-            type = "lldb",
+            type = "codelldb",
             request = "launch",
-            program = function()
-                return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-            end,
+            program = telescope_find_executable_callback,
             cwd = '${workspaceFolder}',
             stopOnEntry = false,
-            args = {},
-            runInTerminal = false,
+            runInTerminal = false
         }
     }
 
@@ -50,11 +85,15 @@ return { setup = function()
     dap.listeners.before.event_terminated["dapui_config"] = function() dapui.close() end
     dap.listeners.before.event_exited["dapui_config"]     = function() dapui.close() end
 
-    vim.keymap.set('n', '<F5>',  function() dap.continue()  end, {})
-    vim.keymap.set('n', '<F10>', function() dap.step_over() end, {})
-    vim.keymap.set('n', '<F11>', function() dap.step_into() end, {})
-    vim.keymap.set('n', '<F12>', function() dap.step_out()  end, {})
-    vim.keymap.set('n', '<C-t>',  function() dap.terminate()  end, {})
+    vim.keymap.set('n', '<F5>',    function() dap.continue()  end, {})
+    vim.keymap.set('n', '<C-F5>',  function() dap.run_tp_cursor()  end, {})
+    vim.keymap.set('n', '<F10>',   function() dap.step_over() end, {})
+    vim.keymap.set('n', '<F11>',   function() dap.step_into() end, {})
+    vim.keymap.set('n', '<F12>',   function() dap.step_out()  end, {})
+    vim.keymap.set('n', '<C-t>',   function() dap.terminate()  end, {})
+
+    vim.keymap.set('n', '<C-[>',    function() dap.up()  end, {})
+    vim.keymap.set('n', '<C-]>',    function() dap.down()  end, {})
 
     vim.keymap.set('n', 'tb', function() dap.toggle_breakpoint() end, {})
     vim.keymap.set('n', 'tB', function() dap.set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, {})
