@@ -15,6 +15,7 @@ return { setup = function()
         on_attach = on_attach
     });
 
+    lspconfig.pylsp.setup{}
     lspconfig.tsserver.setup{}
 
     coq.Now('--shut-up')
