@@ -29,4 +29,24 @@ return { setup = function()
             },
         }
     })
+
+    require("CopilotChat").setup({
+        prompts = {
+            Explain = {
+                mapping = '<A-e>',
+            },
+            Review = {
+                mapping = '<A-r>',
+            },
+            Tests = {
+                mapping = '<A-t>',
+            },
+            Fix = {
+                mapping = '<A-f>',
+            },
+            Optimize = {
+                mapping = '<A-o>',
+            },
+        },
+    })
 end }

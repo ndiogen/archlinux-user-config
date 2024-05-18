@@ -36,9 +36,10 @@ return { configure = function()
         use{ 'ms-jpq/coq.artifacts', branch = 'artifacts' }
 
         use{ 'mfussenegger/nvim-dap' }
-        use{ 'rcarriga/nvim-dap-ui' }
+        use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"} }
 
-        use{ "zbirenbaum/copilot.lua" }
+        use{ 'zbirenbaum/copilot.lua' }
+        use{ 'CopilotC-Nvim/CopilotChat.nvim', branch = 'canary' }
 
         use{ 'neovim/nvim-lspconfig' }
         use{ 'ahmedkhalf/project.nvim' }

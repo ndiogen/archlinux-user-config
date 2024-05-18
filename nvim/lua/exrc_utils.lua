@@ -41,8 +41,6 @@ end
 
 local register_exectable_target = function(name, path)
     executable_targets[name] = path
-
-    get_executable_targets()
 end
 
 local get_executable_targets = function()
