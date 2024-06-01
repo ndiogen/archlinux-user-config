@@ -68,7 +68,7 @@ setup = function(project_menu)
     local bufopts = { noremap=false, silent=true }
     vim.keymap.set('n', 'sq', require('telescope.builtin').quickfix, bufopts)
     vim.keymap.set('n', 'sf', require('telescope.builtin').find_files, bufopts)
-    vim.keymap.set('n', '<sF>', function() telescope.extensions.file_browser.file_browser() end, bufopts)
+    vim.keymap.set('n', 'sF', function() telescope.extensions.file_browser.file_browser() end, bufopts)
     vim.keymap.set('n', 'sg', require('telescope.builtin').live_grep, bufopts)
     vim.keymap.set('n', 'sG', require('telescope.builtin').grep_string, bufopts)
     vim.keymap.set('n', 'sc', require('telescope.builtin').current_buffer_fuzzy_find, bufopts)

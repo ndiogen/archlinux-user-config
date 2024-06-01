@@ -49,6 +49,7 @@ return { configure = function()
 
         use{ 'lewis6991/gitsigns.nvim' }
 
+        use{ 'folke/zen-mode.nvim' }
         use{ 'azazel7/hop.nvim' }
         use{'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
 
@@ -81,6 +82,8 @@ return { configure = function()
     require("gitsigns_config").setup()
 
     require("notify_config").setup()
+
+    require("zen_mode").setup()
     require("hop_config").setup()
     require("ufo_config").setup()
 

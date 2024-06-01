@@ -48,5 +48,17 @@ return { setup = function()
                 mapping = '<A-o>',
             },
         },
+        window = {
+            layout = "horizontal",
+        },
+        mappings = {
+            accept_diff = {
+              normal = '<A-c>',
+              insert = '<A-c>'
+            },
+            show_diff = {
+              normal = '<A-C>',
+            },
+        },
     })
 end }
