@@ -38,8 +38,6 @@ configure = function()
 
     set_option( 'o', 'exrc', false )
 
-    vim.g['formatoptions'] = 'jcrql'
-
     -- Gui config
     vim.g['neovide_scroll_animation_length'] = 0.15
 
@@ -67,9 +65,14 @@ configure = function()
     vim.filetype.add({
         extension = {
             ush = 'hlsl',
-            usf = 'hlsl'
+            usf = 'hlsl',
+            cl = 'glsl'
         }
     })
+
+    --vim.api.nvim_create_autocmd("FileType", {
+        --callback = function() vim.opt_local.formatoptions:remove("cro") end,
+    --})
 
     config_font()
     vim.keymap.set('n', '<C-=>', ":lua increase_font_size()<CR>", {})

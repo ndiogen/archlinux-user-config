@@ -32,13 +32,16 @@ return { configure = function()
         }
         use{ 'nvim-treesitter/nvim-treesitter-context' }
 
-        use{ 'ms-jpq/coq_nvim', branch = 'coq' }
-        use{ 'ms-jpq/coq.artifacts', branch = 'artifacts' }
-
         use{ 'mfussenegger/nvim-dap' }
         use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"} }
 
+        use{ 'hrsh7th/cmp-nvim-lsp' }
+        use{ 'hrsh7th/cmp-buffer' }
+        use{ 'hrsh7th/cmp-path' }
+        use{ 'hrsh7th/cmp-cmdline' }
+        use{ 'hrsh7th/nvim-cmp' }
         use{ 'zbirenbaum/copilot.lua' }
+        use{ "zbirenbaum/copilot-cmp" }
         use{ 'CopilotC-Nvim/CopilotChat.nvim', branch = 'canary' }
 
         use{ 'neovim/nvim-lspconfig' }

@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/home/ndiogen/.cache/nvim/packer_hererocks/2.1.1697887905/share/lua/5.1/?.lua;/home/ndiogen/.cache/nvim/packer_hererocks/2.1.1697887905/share/lua/5.1/?/init.lua;/home/ndiogen/.cache/nvim/packer_hererocks/2.1.1697887905/lib/luarocks/rocks-5.1/?.lua;/home/ndiogen/.cache/nvim/packer_hererocks/2.1.1697887905/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/home/ndiogen/.cache/nvim/packer_hererocks/2.1.1697887905/lib/lua/5.1/?.so"
+local package_path_str = "/home/ndiogen/.cache/nvim/packer_hererocks/2.1.1713484068/share/lua/5.1/?.lua;/home/ndiogen/.cache/nvim/packer_hererocks/2.1.1713484068/share/lua/5.1/?/init.lua;/home/ndiogen/.cache/nvim/packer_hererocks/2.1.1713484068/lib/luarocks/rocks-5.1/?.lua;/home/ndiogen/.cache/nvim/packer_hererocks/2.1.1713484068/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/home/ndiogen/.cache/nvim/packer_hererocks/2.1.1713484068/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -74,20 +74,20 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["CopilotChat.nvim"] = {
+    loaded = true,
+    path = "/home/ndiogen/.local/share/nvim/site/pack/packer/start/CopilotChat.nvim",
+    url = "https://github.com/CopilotC-Nvim/CopilotChat.nvim"
+  },
+  ["copilot-cmp"] = {
+    loaded = true,
+    path = "/home/ndiogen/.local/share/nvim/site/pack/packer/start/copilot-cmp",
+    url = "https://github.com/zbirenbaum/copilot-cmp"
+  },
   ["copilot.lua"] = {
     loaded = true,
     path = "/home/ndiogen/.local/share/nvim/site/pack/packer/start/copilot.lua",
     url = "https://github.com/zbirenbaum/copilot.lua"
-  },
-  ["coq.artifacts"] = {
-    loaded = true,
-    path = "/home/ndiogen/.local/share/nvim/site/pack/packer/start/coq.artifacts",
-    url = "https://github.com/ms-jpq/coq.artifacts"
-  },
-  coq_nvim = {
-    loaded = true,
-    path = "/home/ndiogen/.local/share/nvim/site/pack/packer/start/coq_nvim",
-    url = "https://github.com/ms-jpq/coq_nvim"
   },
   ["exrc.nvim"] = {
     loaded = true,
@@ -113,6 +113,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ndiogen/.local/share/nvim/site/pack/packer/start/nightfox.nvim",
     url = "https://github.com/EdenEast/nightfox.nvim"
+  },
+  ["nvim-cmp"] = {
+    loaded = true,
+    path = "/home/ndiogen/.local/share/nvim/site/pack/packer/start/nvim-cmp",
+    url = "https://github.com/hrsh7th/nvim-cmp"
   },
   ["nvim-dap"] = {
     loaded = true,
@@ -213,6 +218,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ndiogen/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
     url = "https://github.com/akinsho/toggleterm.nvim"
+  },
+  ["zen-mode.nvim"] = {
+    loaded = true,
+    path = "/home/ndiogen/.local/share/nvim/site/pack/packer/start/zen-mode.nvim",
+    url = "https://github.com/folke/zen-mode.nvim"
   }
 }
 
