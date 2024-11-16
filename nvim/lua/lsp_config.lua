@@ -16,7 +16,7 @@ return { setup = function()
     });
 
     lspconfig.pylsp.setup{}
-    lspconfig.tsserver.setup{}
+    lspconfig.ts_ls.setup{}
 
     coq.Now('--shut-up')
 end }
