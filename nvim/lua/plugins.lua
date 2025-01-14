@@ -53,8 +53,9 @@ return { configure = function()
         use{ 'lewis6991/gitsigns.nvim' }
 
         use{ 'folke/zen-mode.nvim' }
+        use{ 'RaafatTurki/hex.nvim' }
         use{ 'azazel7/hop.nvim' }
-        use{'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
+        use{ 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
 
         use{ 'rcarriga/nvim-notify' }
         use{ 'EdenEast/nightfox.nvim' }
@@ -87,6 +88,7 @@ return { configure = function()
     require("notify_config").setup()
 
     require("zen_mode").setup()
+    require("hex_config").setup()
     require("hop_config").setup()
     require("ufo_config").setup()
 
