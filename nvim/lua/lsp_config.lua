@@ -66,5 +66,5 @@ return { setup = function()
 
     lspconfig.clangd.setup{ capabilities = capabilities, on_attach = on_attach }
     lspconfig.pylsp.setup{ capabilities = capabilities, on_attach = on_attach  }
-    lspconfig.tsserver.setup{ capabilities = capabilities, on_attach = on_attach }
+    lspconfig.ts_ls.setup{ capabilities = capabilities, on_attach = on_attach }
 end }

@@ -42,7 +42,7 @@ return { configure = function()
         use{ 'hrsh7th/nvim-cmp' }
         use{ 'zbirenbaum/copilot.lua' }
         use{ "zbirenbaum/copilot-cmp" }
-        use{ 'CopilotC-Nvim/CopilotChat.nvim', branch = 'canary' }
+        use{ 'CopilotC-Nvim/CopilotChat.nvim' }
 
         use{ 'neovim/nvim-lspconfig' }
         use{ 'ahmedkhalf/project.nvim' }
