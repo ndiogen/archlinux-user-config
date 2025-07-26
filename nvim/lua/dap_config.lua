@@ -42,15 +42,16 @@ return { setup = function()
 
     dap.adapters.gdb = {
         type = "executable",
-        command = "gdb",
+        command = "arm-none-eabi-gdb",
         args = { "-i", "dap" }
     }
 
     dap.configurations.cpp = {
         {
             name = "Launch",
-            type = "codelldb",
-            request = "launch",
+            type = "gdb",
+            request = "attach",
+            target = 'localhost:4500',
             program = telescope_find_executable_callback,
             cwd = '${workspaceFolder}',
             stopOnEntry = false,
@@ -90,7 +91,7 @@ return { setup = function()
     vim.keymap.set('n', '<F10>',   function() dap.step_over() end, {})
     vim.keymap.set('n', '<F11>',   function() dap.step_into() end, {})
     vim.keymap.set('n', '<F12>',   function() dap.step_out()  end, {})
-    vim.keymap.set('n', '<C-t>',   function() dap.terminate()  end, {})
+    vim.keymap.set('n', '<C-S-t>',   function() dap.terminate()  end, {})
 
     vim.keymap.set('n', '<C-[>',    function() dap.up()  end, {})
     vim.keymap.set('n', '<C-]>',    function() dap.down()  end, {})
