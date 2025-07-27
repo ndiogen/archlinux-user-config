@@ -33,8 +33,8 @@ configure = function()
     set_option( 'b', 'shiftwidth', indent_size )
 
     set_option( 'o', 'completeopt', 'menuone,noinsert,noselect' )
-    set_option( 'o', 'laststatus', 0 )
-    set_option( 'o', 'ruler', false )
+    --set_option( 'o', 'laststatus', 0 )
+    --set_option( 'o', 'ruler', false )
 
     set_option( 'o', 'exrc', false )
 
