@@ -38,6 +38,9 @@ configure = function()
 
     set_option( 'o', 'exrc', false )
 
+    set_option( 'o', 'makeprg', 'cmake --build ./build' )
+    set_option( 'o', 'swapfile', false )
+
     -- Gui config
     vim.g['neovide_scroll_animation_length'] = 0.15
 
